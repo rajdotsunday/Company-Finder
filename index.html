@@ -2220,24 +2220,43 @@ History
 <div style="
 width:100%;
 display:flex;
-justify-content:flex-end;
+justify-content:space-between;
+align-items:center;
 margin-top:-35px;
 margin-bottom:10px;
 ">
 
-<button id="removeExcelBtn">
-...
-</button>
-
-<div style="
-...
+<button id="downloadExcelZipBtn"
+onclick="downloadExcelZip()"
+style="
+padding:4px 8px;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:12px;
+font-weight:bold;
+transition:all .3s ease;
 ">
-
-<button id="downloadExcelZipBtn">
-...
+Download Excel
 </button>
 
-</div>
+<button id="removeExcelBtn"
+style="
+padding:4px 8px;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:12px;
+font-weight:bold;
+transition:all .3s ease;
+">
+Remove Excel
+</button>
+
 </div>
 
 </div>
