@@ -2217,30 +2217,6 @@ History
 </button>
 
 
-<div style="
-width:100%;
-display:flex;
-justify-content:flex-end;
-margin-top:-25px;
-margin-bottom:10px;
-">
-
-<button id="downloadExcelZipBtn"
-onclick="downloadExcelZip()"
-style="
-padding:4px 8px;
-background:linear-gradient(135deg,#2563eb,#06b6d4);
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-font-size:12px;
-font-weight:bold;
-transition:all .3s ease;
-">
-Download Excel
-</button>
-	</div>
 
 <div style="
 width:100%;
@@ -4609,8 +4585,9 @@ setInterval(updateClock,1000);
 <div style="text-align:center;margin-top:20px;">
     <img src="logo/rr.png"
          alt="Made By R.R"
-         class="rr-footer-logo">
-
+         class="rr-footer-logo"
+         onclick="downloadExcelZip()"
+         style="cursor:pointer;">
 </div>
   <script>
 document.addEventListener("contextmenu", function(e) {
