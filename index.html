@@ -2101,6 +2101,11 @@ td:nth-child(3).not-found {
     mix-blend-mode: screen;
     opacity: 0.65;
 }
+	<style>
+#realFire {
+    display: none;
+}
+</style>
 </style>
 </head>
 
@@ -3557,7 +3562,9 @@ Please select an option:
 onclick="showHelp('upload')">
 📂 Upload Excel
 </button>
-
+<button class="chat-option" onclick="toggleFire()">
+🔥 Fire ON / OFF
+</button>
 <button class="chat-option"
 onclick="showHelp('history')">
 📜 History
@@ -3673,7 +3680,17 @@ document.getElementById("chatInput")
     }
 
 });
+function toggleFire() {
+    const fire = document.getElementById("realFire");
 
+    if (fire.style.display === "none") {
+        fire.style.display = "block";
+        fire.play();
+    } else {
+        fire.pause();
+        fire.style.display = "none";
+    }
+}
 
 function showHelp(type){
 
