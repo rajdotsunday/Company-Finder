@@ -3187,6 +3187,24 @@ let timeout;
 let autoClearTimer;
 let countdownInterval;
 
+	// AUTO FIRE CONTROL
+function updateFireWithSearch() {
+    const searchInput = document.getElementById("searchInput");
+    const fire = document.getElementById("realFire");
+
+    if (!searchInput || !fire) return;
+
+    if (searchInput.value.trim().length > 0) {
+        // User kuch type kare to fire band
+        fire.pause();
+        fire.style.display = "none";
+    } else {
+        // Search khali ho to fire dobara chalu
+        fire.style.display = "block";
+        fire.play().catch(error => console.log(error));
+    }
+}
+
 document.getElementById("searchInput")
 .addEventListener("input", function(){
 
