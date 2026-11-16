@@ -4669,33 +4669,41 @@ async function downloadExcelZip() {
 
 	
 <script>
-const fire = document.getElementById("realFire");
-const status = document.getElementById("fireStatus");
+<video id="realFire" autoplay muted loop playsinline>  
+    <source src="./fire.mp4" type="video/mp4">  
+</video>  <div id="fireStatus" style="  
+    position:fixed;  
+    top:10px;  
+    left:10px;  
+    z-index:100000;  
+    background:black;  
+    color:white;  
+    padding:10px;  
+    font-size:14px;  
+    pointer-events:none;">  
+    FIRE CHECKING...  
+</div>  <script>  
+const fire = document.getElementById("realFire");  
+const status = document.getElementById("fireStatus");  
+  
+fire.addEventListener("loadeddata", () => {  
+    status.innerText = "FIRE VIDEO LOADED ✅";  
+    fire.play().catch(() => {  
+        status.innerText = "VIDEO LOADED, PLAY BLOCKED";  
+    });  
+});  
+  
+fire.addEventListener("error", () => {  
+    status.innerText = "VIDEO ERROR: " +  
+        (fire.error ? fire.error.code : "UNKNOWN");  
+});  
+  
+setTimeout(() => {  
+    if (fire.readyState === 0) {  
+        status.innerText = "VIDEO NOT LOADING - CHECK FILE PATH";  
+    }  
+}, 5000);  
 
-fire.addEventListener("loadeddata", () => {
-
-    status.innerText = "FIRE VIDEO LOADED ✅";
-
-    fire.play().then(() => {
-        setTimeout(() => {
-            status.style.display = "none";
-        }, 1000);
-    }).catch(() => {
-        status.innerText = "VIDEO LOADED, PLAY BLOCKED";
-    });
-
-});
-
-fire.addEventListener("error", () => {
-    status.innerText = "VIDEO ERROR: " +
-        (fire.error ? fire.error.code : "UNKNOWN");
-});
-
-setTimeout(() => {
-    if (fire.readyState === 0) {
-        status.innerText = "VIDEO NOT LOADING - CHECK FILE PATH";
-    }
-}, 5000);
 </script>
 	
 
