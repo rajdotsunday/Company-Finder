@@ -3207,6 +3207,7 @@ function updateFireWithSearch() {
 
 document.getElementById("searchInput")
 .addEventListener("input", function(){
+	updateFireWithSearch();
 
     clearTimeout(timeout);
 
