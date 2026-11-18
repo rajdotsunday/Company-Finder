@@ -4702,17 +4702,40 @@ async function downloadExcelZip() {
 <script>
 const fire = document.getElementById("realFire");
 
-function toggleFire() {
-    if (!fire) return;
 
-    if (fire.style.display === "none") {
+let fireOn = true;
+let rainTimer;
+
+function toggleFire() {
+    const fire = document.getElementById("realFire");
+    const rain = document.getElementById("rainEffect");
+
+    clearTimeout(rainTimer);
+
+    if (fireOn) {
+        fireOn = false;
+
+        rain.style.display = "block";
+
         fire.style.display = "block";
-        fire.play().catch(error => console.log(error));
+        fire.style.opacity = "0";
+
+        rainTimer = setTimeout(() => {
+            rain.style.display = "none";
+            fire.pause();
+            fire.style.display = "none";
+        }, 3000);
+
     } else {
-        fire.pause();
-        fire.style.display = "none";
+        fireOn = true;
+
+        rain.style.display = "none";
+        fire.style.display = "block";
+        fire.style.opacity = "1";
+        fire.play();
     }
 }
+	
 </script>
 
 
