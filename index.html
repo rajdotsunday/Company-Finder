@@ -2101,6 +2101,39 @@ td:nth-child(3).not-found {
     mix-blend-mode: screen;
     opacity: 0.65;
 }
+
+	
+
+#orangeCat {
+    position: fixed;
+    width: 160px;
+    height: auto;
+    bottom: 12px;
+    left: -180px;
+    z-index: 99999;
+    pointer-events: none;
+    animation: catWalk 22s linear infinite;
+}
+
+@keyframes catWalk {
+    0% {
+        left: -180px;
+        transform: scaleX(1);
+    }
+    49% {
+        left: calc(100vw - 160px);
+        transform: scaleX(1);
+    }
+    51% {
+        left: calc(100vw - 160px);
+        transform: scaleX(-1);
+    }
+    100% {
+        left: -180px;
+        transform: scaleX(-1);
+    }
+}
+	
 	
 </style>
 </head>
