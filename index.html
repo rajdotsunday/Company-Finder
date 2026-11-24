@@ -2118,46 +2118,7 @@ td:nth-child(3).not-found {
 #realFire {
     transition: opacity 1.2s ease;
 }
-.character-gif-cell img{
-    width:60px;
-    height:60px;
-    object-fit:contain;
-    display:block;
-    margin:auto;
-}
-
-	/* Table size fixed rakhega */
-table {
-    width: 100% !important;
-    table-layout: fixed !important;
-    border-collapse: collapse;
-}
-
-/* Table cells compact rahenge */
-table th,
-table td {
-    padding: 8px 5px !important;
-    box-sizing: border-box;
-    line-height: 1.2 !important;
-    vertical-align: middle;
-}
-
-/* GIF ko chhota aur fixed rakhega */
-.character-gif-cell img {
-    width: 28px !important;
-    height: 28px !important;
-    max-width: 28px !important;
-    max-height: 28px !important;
-    object-fit: contain;
-    display: block;
-    margin: auto;
-}
-
-/* GIF wale column ki width */
-.character-gif-cell {
-    width: 75px !important;
-    text-align: center;
-}
+	
 </style>
 </head>
 
@@ -3368,45 +3329,33 @@ suggestions.addEventListener("click", function(e){
 
     lastResult = [];
 
-banks.forEach(bank => {
+    banks.forEach(bank => {
 
-    let match = data.find(x => x.bank === bank);
+        let match = data.find(x => x.bank === bank);
 
-    if(match){
+        if(match){
 
-        foundBanks++;
+            foundBanks++;
 
-        let category = String(match.category).trim().toUpperCase();
-
-        html += `
+           html += `
 <tr>
     <td>${match.company}</td>
     <td>${match.bank}</td>
     <td>${match.category}</td>
-    <td class="character-gif-cell">
-        <img src="characters/${category}.gif"
-             alt="${category} Character"
-             onerror="this.style.display='none'">
-    </td>
 </tr>`;
 
-        lastResult.push(match);
+            lastResult.push(match);
 
-    }else{
+        }else{
 
-        html += `
+           html += `
 <tr>
     <td>${company}</td>
     <td>${bank}</td>
     <td class="not-listed">NOT LISTED</td>
-    <td class="character-gif-cell">
-        <img src="characters/not-listed.gif"
-             alt="Crying Character"
-             onerror="this.style.display='none'">
-    </td>
 </tr>`;
-    }
-});
+        }
+    });
 
     document.getElementById("resultBody").innerHTML = html;
 
@@ -4353,7 +4302,6 @@ function restoreCompanyTableHeader(){
             <th>Company</th>
             <th>Bank</th>
             <th>Category</th>
-			<th>Character GIF</th>
         </tr>`;
     }
 }
@@ -4754,40 +4702,17 @@ async function downloadExcelZip() {
 <script>
 const fire = document.getElementById("realFire");
 
-
-let fireOn = true;
-let rainTimer;
-
 function toggleFire() {
-    const fire = document.getElementById("realFire");
-    const rain = document.getElementById("rainEffect");
+    if (!fire) return;
 
-    clearTimeout(rainTimer);
-
-    if (fireOn) {
-        fireOn = false;
-
-        rain.style.display = "block";
-
+    if (fire.style.display === "none") {
         fire.style.display = "block";
-        fire.style.opacity = "0";
-
-        rainTimer = setTimeout(() => {
-            rain.style.display = "none";
-            fire.pause();
-            fire.style.display = "none";
-        }, 3000);
-
+        fire.play().catch(error => console.log(error));
     } else {
-        fireOn = true;
-
-        rain.style.display = "none";
-        fire.style.display = "block";
-        fire.style.opacity = "1";
-        fire.play();
+        fire.pause();
+        fire.style.display = "none";
     }
 }
-	
 </script>
 
 
