@@ -2119,13 +2119,45 @@ td:nth-child(3).not-found {
     transition: opacity 1.2s ease;
 }
 .character-gif-cell img{
-    width:40px;
-    height:40px;
+    width:60px;
+    height:60px;
     object-fit:contain;
     display:block;
     margin:auto;
 }
-	
+
+	/* Table size fixed rakhega */
+table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse;
+}
+
+/* Table cells compact rahenge */
+table th,
+table td {
+    padding: 8px 5px !important;
+    box-sizing: border-box;
+    line-height: 1.2 !important;
+    vertical-align: middle;
+}
+
+/* GIF ko chhota aur fixed rakhega */
+.character-gif-cell img {
+    width: 28px !important;
+    height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+/* GIF wale column ki width */
+.character-gif-cell {
+    width: 75px !important;
+    text-align: center;
+}
 </style>
 </head>
 
