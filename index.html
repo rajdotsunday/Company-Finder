@@ -2118,6 +2118,13 @@ td:nth-child(3).not-found {
 #realFire {
     transition: opacity 1.2s ease;
 }
+.character-gif-cell img{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    display:block;
+    margin:auto;
+}
 	
 </style>
 </head>
@@ -3329,33 +3336,45 @@ suggestions.addEventListener("click", function(e){
 
     lastResult = [];
 
-    banks.forEach(bank => {
+banks.forEach(bank => {
 
-        let match = data.find(x => x.bank === bank);
+    let match = data.find(x => x.bank === bank);
 
-        if(match){
+    if(match){
 
-            foundBanks++;
+        foundBanks++;
 
-           html += `
+        let category = String(match.category).trim().toUpperCase();
+
+        html += `
 <tr>
     <td>${match.company}</td>
     <td>${match.bank}</td>
     <td>${match.category}</td>
+    <td class="character-gif-cell">
+        <img src="characters/${category}.gif"
+             alt="${category} Character"
+             onerror="this.style.display='none'">
+    </td>
 </tr>`;
 
-            lastResult.push(match);
+        lastResult.push(match);
 
-        }else{
+    }else{
 
-           html += `
+        html += `
 <tr>
     <td>${company}</td>
     <td>${bank}</td>
     <td class="not-listed">NOT LISTED</td>
+    <td class="character-gif-cell">
+        <img src="characters/not-listed.gif"
+             alt="Crying Character"
+             onerror="this.style.display='none'">
+    </td>
 </tr>`;
-        }
-    });
+    }
+});
 
     document.getElementById("resultBody").innerHTML = html;
 
@@ -4302,6 +4321,7 @@ function restoreCompanyTableHeader(){
             <th>Company</th>
             <th>Bank</th>
             <th>Category</th>
+			<th>Character GIF</th>
         </tr>`;
     }
 }
