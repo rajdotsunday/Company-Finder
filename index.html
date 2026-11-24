@@ -2118,6 +2118,84 @@ td:nth-child(3).not-found {
 #realFire {
     transition: opacity 1.2s ease;
 }
+
+#tableArea{
+    position:relative;
+    isolation:isolate;
+}
+
+#tableArea.paper-tear::before,
+#tableArea.paper-tear::after{
+    content:"";
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:52%;
+    z-index:5;
+    pointer-events:none;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(210,210,210,.12) 0px,
+            rgba(210,210,210,.12) 1px,
+            transparent 1px,
+            transparent 5px
+        ),
+        linear-gradient(135deg,#fff 0%,#f4f4f4 48%,#dedede 100%);
+    box-shadow:0 0 18px rgba(0,0,0,.28);
+}
+
+#tableArea.paper-tear::before{
+    left:0;
+    clip-path:polygon(
+        0 0,100% 0,96% 8%,100% 15%,95% 23%,100% 31%,
+        94% 40%,100% 49%,95% 58%,100% 67%,94% 76%,
+        100% 85%,95% 93%,100% 100%,0 100%
+    );
+    animation:paperTearLeft 2.5s cubic-bezier(.55,.05,.25,1) forwards;
+}
+
+#tableArea.paper-tear::after{
+    right:0;
+    clip-path:polygon(
+        0 0,100% 0,100% 100%,0 100%,5% 93%,0 85%,
+        6% 76%,0 67%,5% 58%,0 49%,6% 40%,0 31%,
+        5% 23%,0 15%,4% 8%
+    );
+    animation:paperTearRight 2.5s cubic-bezier(.55,.05,.25,1) forwards;
+}
+
+#tableArea.paper-tear #resultTable{
+    transform-origin:center top;
+    animation:paperResultZoom 1.25s cubic-bezier(.18,.75,.25,1) both;
+}
+
+@keyframes paperTearLeft{
+    0%{transform:translateX(0) rotate(0);opacity:1;}
+    35%{transform:translateX(-8%) rotate(-2deg);opacity:1;}
+    100%{transform:translateX(-110%) rotate(-8deg);opacity:0;}
+}
+
+@keyframes paperTearRight{
+    0%{transform:translateX(0) rotate(0);opacity:1;}
+    35%{transform:translateX(8%) rotate(2deg);opacity:1;}
+    100%{transform:translateX(110%) rotate(8deg);opacity:0;}
+}
+
+@keyframes paperResultZoom{
+    0%{transform:scale(.72);opacity:0;filter:blur(5px);}
+    55%{transform:scale(1.045);opacity:1;filter:blur(0);}
+    78%{transform:scale(.985);}
+    100%{transform:scale(1);opacity:1;filter:blur(0);}
+}
+
+@media (prefers-reduced-motion:reduce){
+    #tableArea.paper-tear::before,
+    #tableArea.paper-tear::after,
+    #tableArea.paper-tear #resultTable{
+        animation-duration:.01ms;
+    }
+}
 	
 </style>
 </head>
@@ -3366,6 +3444,21 @@ suggestions.addEventListener("click", function(e){
 
     document.getElementById("resultTable").style.display =
     "table";
+	
+	// Paper tear + zoom reveal only for company search results
+const resultArea = document.getElementById("tableArea");
+
+resultArea.classList.remove("paper-tear");
+
+void resultArea.offsetWidth; // Animation restart
+
+resultArea.classList.add("paper-tear");
+
+clearTimeout(window.paperTearTimer);
+
+window.paperTearTimer = setTimeout(() => {
+    resultArea.classList.remove("paper-tear");
+}, 2800);
 	document.getElementById("tableArea").scrollIntoView({
     behavior: "smooth",
     block: "start"
