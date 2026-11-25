@@ -2381,16 +2381,10 @@ body.tiger-only #realFire,
 body.tiger-only #rainEffect {
     display: none !important;
 }
-/* TIGER MODE - RR LOGO POSITION */
-body.tiger-only .rr-footer-wrap {
-    position: fixed !important;
-    bottom: 15px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    margin: 0 !important;
-    z-index: 9999 !important;
+/* TIGER MODE - HIDE RR LOGO */
+body.tiger-only img[src*="logo/rr.png"] {
+    display: none !important;
 }
-	
 </style>
 </head>
 
@@ -4925,7 +4919,7 @@ setInterval(updateClock,1000);
 </script>
 
 
-<div class="rr-footer-wrap" style="text-align:center;margin-top:20px;">
+<div style="text-align:center;margin-top:20px;">
     <img src="logo/rr.png"
          alt="Made By R.R"
          class="rr-footer-logo"
