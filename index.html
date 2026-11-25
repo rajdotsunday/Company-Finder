@@ -2196,6 +2196,132 @@ td:nth-child(3).not-found {
         animation-duration:.01ms;
     }
 }
+	/* ===== PERMANENT TIGER THEME - RAJ AI ===== */
+html {
+    min-height: 100%;
+    background: #020713;
+}
+
+body {
+    min-height: 100vh !important;
+    padding: 20px !important;
+    color: #ffffff;
+    background:
+        linear-gradient(rgba(2, 8, 22, .22), rgba(2, 8, 22, .42)),
+        url("./tiger-background.jpeg") center center / cover no-repeat fixed !important;
+    background-color: #020713 !important;
+}
+
+/* Main panel stays glass-like so the tiger remains visible */
+.container {
+    width: 90% !important;
+    max-width: 1400px !important;
+    background: rgba(3, 10, 25, .34) !important;
+    border: 1px solid rgba(65, 160, 255, .42) !important;
+    border-radius: 22px !important;
+    box-shadow:
+        0 0 24px rgba(0, 119, 255, .22),
+        0 18px 55px rgba(0, 0, 0, .42) !important;
+    backdrop-filter: blur(2px) !important;
+}
+
+/* Blue-white glowing page heading */
+h1 {
+    color: #f4f9ff !important;
+    -webkit-text-fill-color: #f4f9ff !important;
+    text-shadow:
+        0 0 8px #168cff,
+        0 0 22px rgba(0, 119, 255, .9) !important;
+}
+
+/* Keep the real HTML results table readable over the tiger image */
+#tableArea,
+.table-wrapper {
+    background: rgba(2, 8, 20, .16) !important;
+    border: 1px solid rgba(38, 145, 255, .78) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 18px rgba(0, 119, 255, .48) !important;
+    overflow: auto !important;
+}
+
+#resultTable {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    background: transparent !important;
+}
+
+#resultTable th {
+    background: linear-gradient(180deg, #176dff, #0645c5) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(75, 160, 255, .72) !important;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .45);
+    padding: 12px 10px !important;
+}
+
+#resultTable td {
+    background: rgba(3, 12, 29, .76) !important;
+    color: #39f28a !important;
+    border: 1px solid rgba(55, 135, 225, .42) !important;
+    padding: 12px 10px !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 8px rgba(0, 255, 125, .38);
+}
+
+#resultTable tbody tr:nth-child(even) td {
+    background: rgba(25, 43, 66, .72) !important;
+}
+
+#resultTable td:nth-child(3) {
+    color: #fff23b !important;
+    text-shadow: 0 0 8px rgba(255, 220, 0, .38);
+}
+
+#resultTable td.not-listed {
+    color: #ff5555 !important;
+    text-shadow: 0 0 10px rgba(255, 0, 0, .65) !important;
+}
+
+/* Download button matches the neon-blue theme */
+#downloadBtn {
+    background: linear-gradient(135deg, #168cff, #0750d5) !important;
+    color: #ffffff !important;
+    border: 1px solid #65bdff !important;
+    border-radius: 9px !important;
+    box-shadow: 0 0 14px rgba(0, 132, 255, .42);
+}
+
+/* Make controls and upload areas readable without hiding the wallpaper */
+.upload-box,
+.search-box,
+#resultCount {
+    color: #ffffff !important;
+}
+
+.upload-box {
+    background: rgba(2, 10, 25, .68) !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 8px !important;
+        background-position: center center !important;
+        background-attachment: scroll !important;
+    }
+
+    .container {
+        width: 100% !important;
+        padding: 12px !important;
+        background: rgba(3, 10, 25, .48) !important;
+    }
+
+    #resultTable th,
+    #resultTable td {
+        padding: 9px 7px !important;
+        font-size: 12px !important;
+    }
+}
+/* ===== END PERMANENT TIGER THEME ===== */
 	
 </style>
 </head>
