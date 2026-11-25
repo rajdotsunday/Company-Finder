@@ -5051,18 +5051,16 @@ async function downloadExcelZip() {
 
 <script>
 const fire = document.getElementById("realFire");
+let fireOn = true;
 
 function toggleFire() {
     if (!fire) return;
 
-    if (fire.style.display === "none") {
-        fire.style.display = "block";
-        fire.play().catch(error => console.log(error));
-    } else {
-        fire.pause();
-        fire.style.display = "none";
-    }
+    fireOn = !fireOn;
+
+    updateFireWithSearch();
 }
+	
 </script>
 
 
