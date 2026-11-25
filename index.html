@@ -2374,13 +2374,19 @@ td:nth-child(3):not(.not-listed) {
     font-weight: 800 !important;
 }
 
-
+/* TIGER ONLY MODE */
+body.tiger-only .container,
+body.tiger-only #analogClock,
+body.tiger-only #realFire,
+body.tiger-only #rainEffect {
+    display: none !important;
+}
 
 	
 </style>
 </head>
 
-<body>
+<body class="tiger-only">
 <img id="rainEffect" src="./rain-overlay.gif">
 	
 
@@ -3847,6 +3853,10 @@ document.getElementById("downloadBtn")
 
 });
 
+	function toggleFinderMode() {
+    document.body.classList.toggle("tiger-only");
+	}
+
 const chatBtn = document.getElementById("chatBotBtn");
 const chatBox = document.getElementById("chatBox");
 
@@ -3874,10 +3884,15 @@ onclick="showHelp('upload')">
 <button class="chat-option" onclick="toggleFire()">
 🔥 Fire ON / OFF
 </button>
+
+<button class="chat-option" onclick="toggleFinderMode()">
+🐅 COMPANY FINDER ON / OFF
+</button>
 <button class="chat-option"
 onclick="showHelp('history')">
 📜 History
 </button>
+
 
 <button class="chat-option"
 onclick="showHelp('remove')">
