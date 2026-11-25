@@ -3543,8 +3543,7 @@ let timeout;
 let autoClearTimer;
 let countdownInterval;
 
-	// AUTO FIRE CONTROL
-function updateFireWithSearch() {
+	function updateFireWithSearch() {
     const searchInput = document.getElementById("searchInput");
     const fire = document.getElementById("realFire");
 
@@ -3559,8 +3558,7 @@ function updateFireWithSearch() {
         fire.style.display = "block";
         fire.play().catch(error => console.log(error));
     }
-}
-
+	}
 document.getElementById("searchInput")
 .addEventListener("input", function(){
 	updateFireWithSearch();
