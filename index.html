@@ -2225,14 +2225,47 @@ body {
     backdrop-filter: blur(2px) !important;
 }
 
-/* Blue-white glowing page heading */
+
+/* PREMIUM COMPANY CATEGORY FINDER TITLE */
 h1 {
-    color: #f4f9ff !important;
-    -webkit-text-fill-color: #f4f9ff !important;
+    font-family: "Arial Black", Arial, sans-serif !important;
+    font-size: clamp(28px, 4.5vw, 54px) !important;
+    font-weight: 900 !important;
+    font-style: italic !important;
+    letter-spacing: -1.5px !important;
+    text-align: center !important;
+
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #d9f0ff 45%,
+        #69baff 100%
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+
     text-shadow:
-        0 0 8px #168cff,
-        0 0 22px rgba(0, 119, 255, .9) !important;
+        0 0 8px rgba(0, 140, 255, .8),
+        0 0 18px rgba(0, 100, 255, .7) !important;
 }
+
+h1 .finder-highlight {
+    background: linear-gradient(
+        180deg,
+        #fff5ad,
+        #ffd52e 55%,
+        #ff9900
+    ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+	
 
 /* Keep the real HTML results table readable over the tiger image */
 #tableArea,
@@ -2349,7 +2382,7 @@ td:nth-child(3):not(.not-listed) {
 <div class="container">
 
 
-<h1>Company Category Finder</h1>
+<h1>Company Category <span class="finder-highlight">Finder</span></h1>
 
 
 <div class="bank-section">
