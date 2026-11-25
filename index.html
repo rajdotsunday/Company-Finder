@@ -3545,16 +3545,19 @@ let countdownInterval;
 
 	function updateFireWithSearch() {
     const searchInput = document.getElementById("searchInput");
-    const fire = document.getElementById("realFire");
 
-    if (!searchInput || !fire) return;
+    if (!fire) return;
 
-    if (searchInput.value.trim().length > 0) {
-        // User kuch type kare to fire band
+    if (!fireOn) {
+        fire.pause();
+        fire.style.display = "none";
+        return;
+    }
+
+    if (searchInput && searchInput.value.trim().length > 0) {
         fire.pause();
         fire.style.display = "none";
     } else {
-        // Search khali ho to fire dobara chalu
         fire.style.display = "block";
         fire.play().catch(error => console.log(error));
     }
@@ -5057,7 +5060,6 @@ function toggleFire() {
     if (!fire) return;
 
     fireOn = !fireOn;
-
     updateFireWithSearch();
 }
 	
