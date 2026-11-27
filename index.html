@@ -2395,6 +2395,38 @@ body.tiger-only {
     background-attachment: fixed !important;
     background-color: #000 !important;
 }
+
+	/* ===== RAJ AI PARTY CELEBRATION ===== */
+.party-effect {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+.party-emoji {
+    position: absolute;
+    bottom: -60px;
+    font-size: 30px;
+    animation: partyRise 3s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes partyRise {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.6);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(650deg) scale(1.3);
+        opacity: 0;
+    }
+}
+/* ===== END PARTY CELEBRATION ===== */
 </style>
 </head>
 
@@ -3044,7 +3076,35 @@ function openDB(){
         };
     });
 }
+function launchPartyEffect() {
+    const party = document.createElement("div");
+    party.className = "party-effect";
+    document.body.appendChild(party);
 
+    const emojis = [
+        "🎊", "🎉", "🌸", "🌹", "🌺", "🌷",
+        "💐", "🌻", "🪷", "🎀", "🎗️", "🎈",
+        "✨", "⭐", "🌟", "💖", "💕", "💝",
+        "🦋", "🎆", "🎇", "🥳", "❤️", "💫",
+        "🌼", "🏵️", "🎊", "🎉"
+    ];
+
+    for (let i = 0; i < 55; i++) {
+        const item = document.createElement("span");
+
+        item.className = "party-emoji";
+        item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+        item.style.left = Math.random() * 100 + "%";
+        item.style.animationDelay = Math.random() * 0.5 + "s";
+        item.style.animationDuration = (2 + Math.random() * 1.5) + "s";
+        item.style.fontSize = (22 + Math.random() * 22) + "px";
+
+        party.appendChild(item);
+    }
+
+    setTimeout(() => party.remove(), 4500);
+		}
 /* =========================
    OPEN DB ON PAGE LOAD
 ========================= */
@@ -3656,10 +3716,10 @@ void resultArea.offsetWidth; // Animation restart
 resultArea.classList.add("paper-tear");
 
 clearTimeout(window.paperTearTimer);
-
 window.paperTearTimer = setTimeout(() => {
     resultArea.classList.remove("paper-tear");
-}, 2800);
+    launchPartyEffect();
+}, 2300);
 	document.getElementById("tableArea").scrollIntoView({
     behavior: "smooth",
     block: "start"
